@@ -1,14 +1,68 @@
-# rubytext
+# RubyText
 
-a RubyText widget
+A ruby text widget with flutter.
 
-## Getting Started
+![](./Screenshot.png)
 
-This project is a starting point for a Dart
-[package](https://flutter.dev/developing-packages/),
-a library module containing code that can be shared easily across
-multiple Flutter or Dart projects.
+## Install
+```yaml
+dependencies:
+    ruby_text: ^1.0.2
+```
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+## Example
+
+```dart
+  RubyText(
+    [
+      RubyTextData(
+        '検査',
+        ruby: 'けんさ',
+      ),
+    ],
+  );
+```
+
+## Other
+
+```dart
+  RubyText(
+    this.data, {
+    this.style,
+    this.rubyStyle,
+    this.onTapDown,
+    this.onTapUp,
+    this.onTap,
+    this.onTapCancel,
+    this.textAlign,
+    this.textDirection,
+    this.softWrap,
+    this.overflow,
+    this.maxLines,
+  });
+
+  RubyTextData(
+    this.text, {
+    this.ruby,
+    this.style,
+    this.rubyStyle,
+    this.onTapDown,
+    this.onTapUp,
+    this.onTap,
+    this.onTapCancel,
+  });
+
+// if you want to can use buildRubySpan 
+
+WidgetSpan buildRubySpan(
+  String text, {
+  String ruby,
+  BuildContext context,
+  TextStyle style,
+  TextStyle rubyStyle,
+  GestureTapDownCallback onTapDown,
+  GestureTapUpCallback onTapUp,
+  GestureTapCallback onTap,
+  GestureTapCancelCallback onTapCancel,
+})
+```
