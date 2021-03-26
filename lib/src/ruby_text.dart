@@ -15,22 +15,22 @@ class RubyText extends StatelessWidget {
     this.softWrap,
     this.overflow,
     this.maxLines,
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   final List<RubyTextData> data;
-  final TextStyle style;
-  final TextStyle rubyStyle;
-  final GestureTapDownCallback onTapDown;
-  final GestureTapUpCallback onTapUp;
-  final GestureTapCallback onTap;
-  final GestureTapCancelCallback onTapCancel;
+  final TextStyle? style;
+  final TextStyle? rubyStyle;
+  final GestureTapDownCallback? onTapDown;
+  final GestureTapUpCallback? onTapUp;
+  final GestureTapCallback? onTap;
+  final GestureTapCancelCallback? onTapCancel;
 
-  final TextAlign textAlign;
-  final TextDirection textDirection;
-  final bool softWrap;
-  final TextOverflow overflow;
-  final int maxLines;
+  final TextAlign? textAlign;
+  final TextDirection? textDirection;
+  final bool? softWrap;
+  final TextOverflow? overflow;
+  final int? maxLines;
 
   @override
   Widget build(BuildContext context) {
@@ -65,11 +65,11 @@ class RubyText extends StatelessWidget {
             )
             .toList(),
       ),
-      textAlign: this.textAlign,
-      textDirection: this.textDirection,
-      softWrap: this.softWrap,
-      overflow: this.overflow,
-      maxLines: this.maxLines,
+      textAlign: textAlign,
+      textDirection: textDirection,
+      softWrap: softWrap,
+      overflow: overflow,
+      maxLines: maxLines,
     );
   }
 }

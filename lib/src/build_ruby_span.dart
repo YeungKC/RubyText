@@ -2,46 +2,49 @@ import 'package:flutter/widgets.dart';
 
 WidgetSpan buildRubySpan(
   String text, {
-  String ruby,
-  BuildContext context,
-  TextStyle style,
-  TextStyle rubyStyle,
-  GestureTapDownCallback onTapDown,
-  GestureTapUpCallback onTapUp,
-  GestureTapCallback onTap,
-  GestureTapCancelCallback onTapCancel,
+  String? ruby,
+  required BuildContext context,
+  TextStyle? style,
+  TextStyle? rubyStyle,
+  GestureTapDownCallback? onTapDown,
+  GestureTapUpCallback? onTapUp,
+  GestureTapCallback? onTap,
+  GestureTapCancelCallback? onTapCancel,
 }) {
-  assert(text != null);
-  assert(context != null || style != null);
-
-  final DefaultTextStyle defaultTextStyle = DefaultTextStyle.of(context);
-  TextStyle effectiveTextStyle = style;
-  if (style == null || style.inherit)
+  final defaultTextStyle = DefaultTextStyle.of(context);
+  var effectiveTextStyle = style;
+  if (style == null || style.inherit) {
     effectiveTextStyle = defaultTextStyle.style.merge(style);
-  if (MediaQuery.boldTextOverride(context))
+  }
+  if (MediaQuery.boldTextOverride(context)) {
     effectiveTextStyle =
-        effectiveTextStyle.merge(const TextStyle(fontWeight: FontWeight.bold));
+        effectiveTextStyle!.merge(const TextStyle(fontWeight: FontWeight.bold));
+  }
 
-  final TextStyle defaultRubyTextStyle = effectiveTextStyle.merge(
+  assert(effectiveTextStyle!.fontSize != null, 'must be has a font size.');
+
+  final defaultRubyTextStyle = effectiveTextStyle!.merge(
     TextStyle(
-      fontSize: effectiveTextStyle.fontSize / 1.5,
+      fontSize: effectiveTextStyle.fontSize! / 1.5,
     ),
   );
 
-  TextStyle effectiveRubyTextStyle = rubyStyle;
-  if (style == null || style.inherit)
+  var effectiveRubyTextStyle = rubyStyle;
+  if (style == null || style.inherit) {
     effectiveRubyTextStyle = defaultRubyTextStyle.merge(style);
-  if (MediaQuery.boldTextOverride(context))
-    effectiveRubyTextStyle = effectiveRubyTextStyle
+  }
+  if (MediaQuery.boldTextOverride(context)) {
+    effectiveRubyTextStyle = effectiveRubyTextStyle!
         .merge(const TextStyle(fontWeight: FontWeight.bold));
+  }
 
   if (ruby != null &&
       effectiveTextStyle.letterSpacing == null &&
-      effectiveRubyTextStyle.letterSpacing == null &&
+      effectiveRubyTextStyle!.letterSpacing == null &&
       ruby.length >= 2 &&
       text.length >= 2) {
-    double rubyWidth = _getWidth(ruby, effectiveRubyTextStyle);
-    double textWidth = _getWidth(text, effectiveTextStyle);
+    var rubyWidth = _getWidth(ruby, effectiveRubyTextStyle);
+    var textWidth = _getWidth(text, effectiveTextStyle);
 
     if (textWidth > rubyWidth) {
       var newLetterSpacing = (textWidth - rubyWidth) / ruby.length;
@@ -89,9 +92,9 @@ WidgetSpan buildRubySpan(
 }
 
 double _getWidth(String ruby, TextStyle effectiveRubyTextStyle) {
-  double rubyWidth = ruby.length * effectiveRubyTextStyle.fontSize;
-  double totalLetterSpacing = effectiveRubyTextStyle.letterSpacing != null
-      ? ruby.length - 1 * effectiveRubyTextStyle.letterSpacing
+  var rubyWidth = ruby.length * effectiveRubyTextStyle.fontSize!;
+  var totalLetterSpacing = effectiveRubyTextStyle.letterSpacing != null
+      ? ruby.length - 1 * effectiveRubyTextStyle.letterSpacing!
       : 0.0;
   return rubyWidth + totalLetterSpacing;
 }
