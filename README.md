@@ -1,5 +1,7 @@
 # RubyText
 
+[![Pub](https://img.shields.io/pub/v/ruby_text.svg)](https://pub.dartlang.org/packages/ruby_text)
+
 A ruby text widget with flutter.
 
 ![](./Screenshot.png)
@@ -7,7 +9,7 @@ A ruby text widget with flutter.
 ## Install
 ```yaml
 dependencies:
-    ruby_text: ^1.0.2
+    ruby_text: <Latest version.>
 ```
 
 ## Example
