@@ -31,7 +31,7 @@ WidgetSpan buildRubySpan(
 
   var effectiveRubyTextStyle = rubyStyle;
   if (style == null || style.inherit) {
-    effectiveRubyTextStyle = defaultRubyTextStyle.merge(style);
+    effectiveRubyTextStyle = defaultRubyTextStyle.merge(rubyStyle);
   }
   if (MediaQuery.boldTextOverride(context)) {
     effectiveRubyTextStyle = effectiveRubyTextStyle!
