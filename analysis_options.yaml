@@ -1,1 +1,16 @@
-include: package:pedantic/analysis_options.yaml
+include: package:very_good_analysis/analysis_options.yaml
+
+analyzer:
+  errors:
+    public_member_api_docs: ignore
+    avoid_private_typedef_functions: ignore
+    always_use_package_imports: ignore
+  exclude:
+    - 'bin/cache/**'
+    - 'lib/i18n/messages_*.dart'
+    - 'lib/generated/**'
+    - '**.g.dart'
+
+linter:
+  rules:
+    - prefer_relative_imports
