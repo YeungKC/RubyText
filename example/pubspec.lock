@@ -81,13 +81,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  functional_widget_annotation:
-    dependency: transitive
-    description:
-      name: functional_widget_annotation
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.9.0+1"
   matcher:
     dependency: transitive
     description:
