@@ -28,43 +28,25 @@ dependencies:
 ## Other
 
 ```dart
-  RubyText(
-    this.data, {
-    this.style,
-    this.rubyStyle,
-    this.onTapDown,
-    this.onTapUp,
-    this.onTap,
-    this.onTapCancel,
-    this.textAlign,
-    this.textDirection,
-    this.softWrap,
-    this.overflow,
-    this.maxLines,
-  });
+const RubyText(
+  List<RubyTextData> data, {
+  double spacing = 0.0,
+  TextStyle? style,
+  TextStyle? rubyStyle,
+  TextAlign? textAlign,
+  TextDirection? textDirection,
+  bool? softWrap,
+  TextOverflow? overflow,
+  int? maxLines,
+});
 
-  RubyTextData(
-    this.text, {
-    this.ruby,
-    this.style,
-    this.rubyStyle,
-    this.onTapDown,
-    this.onTapUp,
-    this.onTap,
-    this.onTapCancel,
-  });
-
-// if you want to can use buildRubySpan 
-
-WidgetSpan buildRubySpan(
+const RubyTextData(
   String text, {
-  String ruby,
-  BuildContext context,
-  TextStyle style,
-  TextStyle rubyStyle,
-  GestureTapDownCallback onTapDown,
-  GestureTapUpCallback onTapUp,
-  GestureTapCallback onTap,
-  GestureTapCancelCallback onTapCancel,
-})
+  String? ruby, 
+  TextStyle? style,
+  TextStyle? rubyStyle,
+  TextDirection textDirection = TextDirection.rtl,
+});
+
+RubySpanWidget(BuildContext context, RubyTextData data);
 ```

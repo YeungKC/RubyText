@@ -151,25 +151,3 @@ double _measurementWidth(
   )..layout();
   return textPainter.width;
 }
-
-extension ListExtension<T> on List<T> {
-  List<T> joinObject(T separator) {
-    final iterator = this.iterator;
-    if (!iterator.moveNext()) return [];
-    final buffer = <T>[];
-    if (separator == null) {
-      do {
-        buffer.add(iterator.current);
-      } while (iterator.moveNext());
-    } else {
-      buffer.add(iterator.current);
-      while (iterator.moveNext()) {
-        buffer
-          ..add(separator)
-          ..add(iterator.current);
-      }
-    }
-
-    return buffer;
-  }
-}
