@@ -48,5 +48,5 @@ const RubyTextData(
   TextDirection textDirection = TextDirection.rtl,
 });
 
-RubySpanWidget(BuildContext context, RubyTextData data);
+const RubySpanWidget(BuildContext context, RubyTextData data);
 ```
