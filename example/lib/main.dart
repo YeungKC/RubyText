@@ -140,17 +140,6 @@ class MyApp extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: RubyText(
-                      [
-                        RubyTextData(
-                          '舌尖上的中国',
-                          ruby: 'shé jiān shàng de zhōng guó',
-                        ),
-                      ],
-                    ),
-                  ),
                 ],
               ),
             ),

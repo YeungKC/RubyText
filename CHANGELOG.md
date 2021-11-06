@@ -1,3 +1,7 @@
+## [3.0.1]
+
+fix RubyTextData.copyWith.
+
 ## [3.0.0]
 
 1. Add cache to improve performance.

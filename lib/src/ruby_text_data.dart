@@ -26,12 +26,15 @@ class RubyTextData extends Equatable {
       ];
 
   RubyTextData copyWith({
+    String? text,
+    String? ruby,
     TextStyle? style,
     TextStyle? rubyStyle,
     TextDirection? textDirection,
   }) =>
       RubyTextData(
-        text,
+        text ?? this.text,
+        ruby: ruby ?? this.ruby,
         style: style ?? this.style,
         rubyStyle: rubyStyle ?? this.rubyStyle,
         textDirection: textDirection ?? this.textDirection,
