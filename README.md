@@ -4,12 +4,15 @@
 
 A ruby text widget with flutter.
 
-![](./Screenshot.png)
+|         Hiragana On         |         Hiragana Off         |
+| :-------------------------: | :--------------------------: |
+| ![](./docs/hiragana_on.png) | ![](./docs/hiragana_off.png) |
 
 ## Install
+
 ```yaml
 dependencies:
-    ruby_text: <Latest version.>
+  ruby_text: <Latest version.>
 ```
 
 ## Example
@@ -22,6 +25,7 @@ dependencies:
         ruby: 'けんさ',
       ),
     ],
+    showHiraganas: true,
   );
 ```
 
@@ -38,15 +42,16 @@ const RubyText(
   bool? softWrap,
   TextOverflow? overflow,
   int? maxLines,
+  bool showHiraganas,
 });
 
 const RubyTextData(
   String text, {
-  String? ruby, 
+  String? ruby,
   TextStyle? style,
   TextStyle? rubyStyle,
   TextDirection textDirection = TextDirection.rtl,
 });
 
-const RubySpanWidget(BuildContext context, RubyTextData data);
+const RubySpanWidget(BuildContext context, RubyTextData data, bool showHiraganas: true);
 ```
