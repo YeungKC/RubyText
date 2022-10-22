@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:tuple/tuple.dart';
 
@@ -8,7 +7,7 @@ import 'ruby_text_data.dart';
 typedef _BuildRubySpanResult = Tuple2<TextStyle, TextStyle>;
 
 class RubySpanWidget extends HookWidget {
-  const RubySpanWidget(this.data, this.showHiraganas, {Key? key})
+  const RubySpanWidget(this.data, {Key? key, this.showHiraganas = true})
       : super(key: key);
 
   final RubyTextData data;
@@ -157,7 +156,7 @@ class RubyText extends StatelessWidget {
                       rubyStyle: rubyStyle,
                       textDirection: textDirection,
                     ),
-                    showHiraganas,
+                    showHiraganas: showHiraganas,
                   ),
                 ),
               )
