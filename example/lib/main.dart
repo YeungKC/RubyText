@@ -3,24 +3,26 @@ import 'package:ruby_text/ruby_text.dart';
 
 void main() {
   runApp(
-    MyApp(),
+    const MyApp(),
   );
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: Scaffold(
         body: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.all(64),
+            padding: EdgeInsets.all(64),
             child: Center(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(16.0),
+                    padding: EdgeInsets.all(16),
                     child: RubyText(
                       [
                         RubyTextData(
@@ -119,7 +121,7 @@ class MyApp extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(16.0),
+                    padding: EdgeInsets.all(16),
                     child: RubyText(
                       [
                         RubyTextData(
@@ -130,7 +132,7 @@ class MyApp extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(16.0),
+                    padding: EdgeInsets.all(16),
                     child: RubyText(
                       [
                         RubyTextData(

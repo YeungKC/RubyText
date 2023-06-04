@@ -7,14 +7,14 @@ class RubyTextData extends Equatable {
     this.ruby,
     this.style,
     this.rubyStyle,
-    this.textDirection = TextDirection.rtl,
+    this.textDirection,
   });
 
   final String text;
   final String? ruby;
   final TextStyle? style;
   final TextStyle? rubyStyle;
-  final TextDirection textDirection;
+  final TextDirection? textDirection;
 
   @override
   List<Object?> get props => [
