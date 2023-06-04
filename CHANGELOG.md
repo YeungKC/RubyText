@@ -1,3 +1,8 @@
+## [3.0.2]
+
+* Upgrade dependencies.
+* Use default textDirection from context.
+
 ## [3.0.1]
 
 fix RubyTextData.copyWith.
