@@ -50,7 +50,7 @@ const RubyTextData(
   String? ruby,
   TextStyle? style,
   TextStyle? rubyStyle,
-  TextDirection textDirection = TextDirection.rtl,
+  TextDirection? textDirection,
 });
 
 const RubySpanWidget(BuildContext context, RubyTextData data, bool showHiraganas: true);

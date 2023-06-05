@@ -4,8 +4,6 @@ import 'package:tuple/tuple.dart';
 
 import 'ruby_text_data.dart';
 
-typedef _BuildRubySpanResult = Tuple2<TextStyle, TextStyle>;
-
 class RubySpanWidget extends HookWidget {
   const RubySpanWidget(this.data, {Key? key, this.showHiraganas = true})
       : super(key: key);
@@ -15,8 +13,9 @@ class RubySpanWidget extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textDirection = Directionality.maybeOf(context);
     final defaultTextStyle = DefaultTextStyle.of(context).style;
-    final boldTextOverride = MediaQuery.boldTextOverride(context);
+    final boldTextOverride = MediaQuery.boldTextOf(context);
 
     final result = useMemoized(
       () {
@@ -56,12 +55,14 @@ class RubySpanWidget extends HookWidget {
           final rubyWidth = _measurementWidth(
             ruby,
             effectiveRubyTextStyle,
-            textDirection: data.textDirection,
+            textDirection:
+                data.textDirection ?? textDirection ?? TextDirection.ltr,
           );
           final textWidth = _measurementWidth(
             text,
             effectiveTextStyle,
-            textDirection: data.textDirection,
+            textDirection:
+                data.textDirection ?? textDirection ?? TextDirection.ltr,
           );
 
           if (textWidth > rubyWidth) {
@@ -75,7 +76,7 @@ class RubySpanWidget extends HookWidget {
           }
         }
 
-        return _BuildRubySpanResult(effectiveTextStyle, effectiveRubyTextStyle);
+        return Tuple2(effectiveTextStyle, effectiveRubyTextStyle);
       },
       [defaultTextStyle, boldTextOverride, data],
     );
@@ -173,7 +174,7 @@ class RubyText extends StatelessWidget {
 double _measurementWidth(
   String text,
   TextStyle style, {
-  TextDirection textDirection = TextDirection.rtl,
+  TextDirection textDirection = TextDirection.ltr,
 }) {
   final textPainter = TextPainter(
     text: TextSpan(text: text, style: style),
