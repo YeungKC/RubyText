@@ -1,13 +1,15 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:tuple/tuple.dart';
 
 import 'ruby_text_data.dart';
 
 class RubySpanWidget extends HookWidget {
-  const RubySpanWidget(this.data, {Key? key}) : super(key: key);
+  const RubySpanWidget(this.data, {Key? key, this.showHiraganas = true})
+      : super(key: key);
 
   final RubyTextData data;
+  final bool showHiraganas;
 
   @override
   Widget build(BuildContext context) {
@@ -81,14 +83,24 @@ class RubySpanWidget extends HookWidget {
 
     final effectiveTextStyle = result.item1;
     final effectiveRubyTextStyle = result.item2;
+    final transparentRubyStyle =
+        effectiveRubyTextStyle.copyWith(color: Colors.transparent);
 
     final texts = <Widget>[];
-    if (data.ruby != null) {
+    if (showHiraganas) {
       texts.add(
         Text(
-          data.ruby!,
-          textAlign: TextAlign.center,
+          (data.ruby != null) ? data.ruby! : '',
           style: effectiveRubyTextStyle,
+          textDirection: data.textDirection,
+        ),
+      );
+    } else {
+      texts.add(
+        Text(
+          (data.ruby != null) ? data.ruby! : '',
+          textAlign: TextAlign.center,
+          style: transparentRubyStyle,
         ),
       );
     }
@@ -119,6 +131,7 @@ class RubyText extends StatelessWidget {
     this.softWrap,
     this.overflow,
     this.maxLines,
+    this.showHiraganas = true,
   }) : super(key: key);
 
   final List<RubyTextData> data;
@@ -130,6 +143,7 @@ class RubyText extends StatelessWidget {
   final bool? softWrap;
   final TextOverflow? overflow;
   final int? maxLines;
+  final bool showHiraganas;
 
   @override
   Widget build(BuildContext context) => Text.rich(
@@ -143,6 +157,7 @@ class RubyText extends StatelessWidget {
                       rubyStyle: rubyStyle,
                       textDirection: textDirection,
                     ),
+                    showHiraganas: showHiraganas,
                   ),
                 ),
               )
